@@ -1,8 +1,6 @@
 const Cars = require("./cars-model")
 
 
-
-
 const checkCarId =  async (req, res, next) => {
   // DO YOUR MAGIC
   const { id } = req.params
