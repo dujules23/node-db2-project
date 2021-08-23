@@ -32,14 +32,33 @@ const checkCarPayload = (req, res, next) => {
     }
   }
   catch{
-    res.status(500).json({ "Error finding car"})
+    res.status(500).json({ message: "Error finding car"})
   }
 }
 
 const checkVinNumberValid = (req, res, next) => {
   // DO YOUR MAGIC
+  const { vin } = req.body
+  try{
+    if(!vin){
+      res.status(400).json({message: `vin ${vin} is invalid` })
+    }
+    else{
+      next();
+    }
+  }
+  catch{
+    res.status(500).json({ message: "Error validating Vin number"})
+  }
 }
 
 const checkVinNumberUnique = (req, res, next) => {
   // DO YOUR MAGIC
+}
+
+module.exports = {
+  checkCarId,
+  checkCarPayload,
+  checkVinNumberValid,
+  checkVinNumberUnique
 }
